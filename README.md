@@ -1,9 +1,7 @@
 # Pangu Engine Gradle Plugin
 
 ![Java Version](https://img.shields.io/badge/Java-11-blue)
-
-[![All Contributors](https://img.shields.io/github/contributors/UnknownDomainGames/GradlePlugin)]([Contributors to UnknownDomainGames/GradlePlugin (github.com)](https://github.com/UnknownDomainGames/GradlePlugin/graphs/contributors))
-
+[![All Contributors](https://img.shields.io/github/contributors/UnknownDomainGames/GradlePlugin)](https://github.com/UnknownDomainGames/GradlePlugin/graphs/contributors)
 [![License](https://img.shields.io/github/license/UnknownDomainGames/GradlePlugin)](https://github.com/UnknownDomainGames/GradlePlugin/blob/dev/LICENSE)
 [![Discord Onlines](https://img.shields.io/discord/556150394057916426)](http://discord.gg/KRGMBw3)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/UnknownDomainGames/GradlePlugin/Build)](https://github.com/UnknownDomainGames/GradlePlugin/actions/workflows/build.yml)
