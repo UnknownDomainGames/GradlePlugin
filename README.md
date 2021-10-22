@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/UnknownDomainGames/GradlePlugin)](https://github.com/UnknownDomainGames/GradlePlugin/blob/dev/LICENSE)
 [![Discord Onlines](https://img.shields.io/discord/556150394057916426)](http://discord.gg/KRGMBw3)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/UnknownDomainGames/GradlePlugin/Build)](https://github.com/UnknownDomainGames/GradlePlugin/actions/workflows/build.yml)
-[![Latest Version](https://img.shields.io/github/v/release/UnknownDomainGames/PanguEngine?include_prereleases)](https://github.com/UnknownDomainGames/GradlePlugin/releases/latest)
+[![Latest Version](https://img.shields.io/github/v/release/UnknownDomainGames/GradlePlugin?include_prereleases)](https://github.com/UnknownDomainGames/GradlePlugin/releases/latest)
 
 用于[PanguEngine](https://github.com/UnknownDomainGames/PanguEngine) mod开发的快捷[Gradle](https://gradle.org/)插件。
 
