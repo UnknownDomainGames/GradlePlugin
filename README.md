@@ -52,7 +52,7 @@ Please read our contribution guide: [English(en_US)](https://github.com/UnknownD
 
 ## 相关链接（Links）
 
-- [[PanguEngine](https://github.com/UnknownDomainGames/PanguEngine)](https://github.com/UnknownDomainGame/PanguEngine/wiki)
+- [PanguEngine](https://github.com/UnknownDomainGames/PanguEngine)
 - [项目简介（Introducing Project）](https://github.com/UnknownDomainGames/PanguEngine/wiki/Introducing-Project)
 - [示例模组（Example Mod）](https://github.com/UnknownDomainGames/ExampleMod)
 - 交流QQ群（QQ group for communication）：[965101316](https://jq.qq.com/?_wv=1027&k=5exnX2o)
