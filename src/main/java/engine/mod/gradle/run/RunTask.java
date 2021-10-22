@@ -1,23 +1,30 @@
-package engine.mod.gradle.task;
+package engine.mod.gradle.run;
 
 import org.gradle.api.internal.file.collections.FileCollectionAdapter;
 import org.gradle.api.internal.file.collections.MinimalFileSet;
 import org.gradle.api.plugins.JavaPlugin;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.JavaExec;
 
 import javax.annotation.Nonnull;
+import javax.inject.Inject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class RunClientTask extends JavaExec {
+public class RunTask extends JavaExec {
 
-    public RunClientTask() {
-        super();
-        getMainClass().set("engine.client.launch.Bootstrap");
-        args(List.of());
-        jvmArgs(List.of("--add-opens", "java.base/java.lang=ALL-UNNAMED"));
+    private final AbstractRunConfig config;
+
+    @Inject
+    public RunTask(AbstractRunConfig config) {
+        this.config = config;
+
+        getMainClass().set(config.getMainClass());
+        workingDir(getProject().getRootDir());
+        args(config.getArgs());
+        jvmArgs(config.getJvmArgs());
         setClasspath(new FileCollectionAdapter(new MinimalFileSet() {
             @Override
             @Nonnull
@@ -31,15 +38,15 @@ public class RunClientTask extends JavaExec {
             @Override
             @Nonnull
             public String getDisplayName() {
-                return "Engine Runtime Classpath";
+                return "Engine " + config.getName() + " Runtime Classpath";
             }
         }));
         dependsOn(getProject().getTasks().getByName(JavaPlugin.COMPILE_JAVA_TASK_NAME));
         dependsOn(getProject().getTasks().getByName(JavaPlugin.PROCESS_RESOURCES_TASK_NAME));
     }
 
-    @Override
-    public void exec() {
-        super.exec();
+    @Internal
+    public AbstractRunConfig getConfigs() {
+        return config;
     }
 }

@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="%NAME%" type="Application" factoryName="Application" show_console_on_std_err="true" show_console_on_std_out="true">
+        <option name="MAIN_CLASS_NAME" value="%MAIN_CLASS%" />
+        <module name="%IDEA_MODULE%" />
+        <option name="PROGRAM_PARAMETERS" value="%ARGS%" />
+        <option name="VM_PARAMETERS" value="%JVM_ARGS%" />
+        <method v="2">
+            <option name="Make" enabled="true" />
+        </method>
+    </configuration>
+</component>
