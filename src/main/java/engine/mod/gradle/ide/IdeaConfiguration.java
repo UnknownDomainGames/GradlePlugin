@@ -4,7 +4,6 @@ import engine.mod.gradle.run.AbstractRunConfig;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.gradle.api.Project;
-import org.gradle.plugins.ide.eclipse.model.EclipseModel;
 import org.gradle.plugins.ide.idea.model.IdeaModel;
 
 import java.io.File;
@@ -32,7 +31,7 @@ public class IdeaConfiguration {
             String configData = IOUtils.resourceToString("idea_run_config_template.xml", StandardCharsets.UTF_8, IdeaConfiguration.class.getClassLoader())
                     .replace("%NAME%", configName)
                     .replace("%MAIN_CLASS%", config.getMainClass())
-                    .replace("%ECLIPSE_PROJECT%", project.getExtensions().getByType(EclipseModel.class).getProject().getName())
+                    //.replace("%ECLIPSE_PROJECT%", project.getExtensions().getByType(EclipseModel.class).getProject().getName())
                     .replace("%IDEA_MODULE%", project.getExtensions().getByType(IdeaModel.class).getModule().getName() + ".main")
                     .replace("%ARGS%", String.join(" ", config.getArgs()).replaceAll("\"", "&quot;"))
                     .replace("%JVM_ARGS%", String.join(" ", config.getJvmArgs()).replaceAll("\"", "&quot;"));

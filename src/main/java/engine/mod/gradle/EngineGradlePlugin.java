@@ -29,7 +29,7 @@ public class EngineGradlePlugin implements Plugin<Project> {
             project.getPluginManager().apply(JavaPlugin.class);
             project.getPluginManager().apply(JavaLibraryPlugin.class);
             project.getPluginManager().apply(MavenPublishPlugin.class);
-            project.getPluginManager().apply(EclipsePlugin.class);
+            //project.getPluginManager().apply(EclipsePlugin.class);
             project.getPluginManager().apply(IdeaPlugin.class);
             IdeaConfiguration.apply(project);
         }
