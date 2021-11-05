@@ -17,12 +17,12 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
     public EngineGradleExtensionImpl(Project project) {
         this.project = project;
         project.afterEvaluate(project1 -> {
-            { // Add JitPack
-                if (artifact.addJitPack) {
+            { // Add JitPack Repository
+                if (artifact.addJitPackRepo) {
                     project.getRepositories().mavenLocal();
                     project.getRepositories().maven(repo -> {
-                        repo.setName(EngineArtifactSettings.JITPACK_NAME);
-                        repo.setUrl(EngineArtifactSettings.JITPACK_URL);
+                        repo.setName(EngineArtifactSettings.JITPACK_REPO_NAME);
+                        repo.setUrl(EngineArtifactSettings.JITPACK_REPO_URL);
                     });
                     project.getRepositories().mavenCentral();
                 }
@@ -35,14 +35,11 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                 }
             }
             { // Add engine dependencies
-                if (artifact.addGameEngine) {
-                    addEngineDependency("game-engine");
-                }
-                if (artifact.addClient) {
-                    addEngineDependency(JavaPlugin.RUNTIME_ONLY_CONFIGURATION_NAME, "client");
-                }
                 if (artifact.addAnnotationProcessor) {
                     addEngineDependency(JavaPlugin.ANNOTATION_PROCESSOR_CONFIGURATION_NAME, "mod-annotation-processor");
+                }
+                for (String module : artifact.engineModules) {
+                    addEngineDependency(module);
                 }
             }
             { // Add lwjgl natives

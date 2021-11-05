@@ -9,16 +9,18 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class EngineArtifactSettings {
 
-    public static final String JITPACK_NAME = "JitPack";
-    public static final String JITPACK_URL = "https://jitpack.io/";
+    public static final String JITPACK_REPO_NAME = "JitPack";
+    public static final String JITPACK_REPO_URL = "https://jitpack.io/";
 
-    public boolean addJitPack = true;
+    public boolean addJitPackRepo = true;
+
     public String version = null;
     public String dependencyConfiguration = JavaPlugin.IMPLEMENTATION_CONFIGURATION_NAME;
     public ArtifactNotationFormat dependencyFormat = ArtifactNotationFormat.JITPACK;
-    public boolean addGameEngine = true;
-    public boolean addClient = true;
+
     public boolean addAnnotationProcessor = true;
+    public List<String> engineModules = new ArrayList<>(List.of("client", "server", "game-engine"));
+
     public boolean addLWJGLNatives = true;
     public List<String> lwjglNativesModules = new ArrayList<>(List.of("lwjgl",
             "lwjgl-assimp", "lwjgl-glfw", "lwjgl-opengl", "lwjgl-openal", "lwjgl-shaderc", "lwjgl-stb", "lwjgl-tinyfd", "lwjgl-vma"));
