@@ -2,6 +2,7 @@ package engine.mod.gradle.extension;
 
 import engine.mod.gradle.extension.artifact.EngineArtifactSettings;
 import engine.mod.gradle.run.AbstractRunConfig;
+import engine.mod.gradle.run.DefaultRunConfig;
 import groovy.lang.Closure;
 
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public abstract class EngineGradleExtension {
 
     public void version(String version) {
         artifact.version(version);
+    }
+
+    public void run(String name, Closure<Void> configurator) {
+        run(new DefaultRunConfig(name));
     }
 
     public List<AbstractRunConfig> getRunConfigs() {
