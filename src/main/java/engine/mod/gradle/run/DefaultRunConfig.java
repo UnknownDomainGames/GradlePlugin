@@ -1,5 +1,6 @@
 package engine.mod.gradle.run;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -7,8 +8,8 @@ public class DefaultRunConfig extends AbstractRunConfig {
 
     private final String name;
     private String mainClass;
-    private List<String> args;
-    private List<String> jvmArgs;
+    private List<String> args = new ArrayList<>();
+    private List<String> jvmArgs = new ArrayList<>();
 
     public DefaultRunConfig(String name) {
         this.name = name;
