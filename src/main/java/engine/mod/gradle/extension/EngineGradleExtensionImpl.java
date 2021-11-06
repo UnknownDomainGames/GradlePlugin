@@ -3,6 +3,7 @@ package engine.mod.gradle.extension;
 import engine.mod.gradle.extension.artifact.EngineArtifactSettings;
 import engine.mod.gradle.run.AbstractRunConfig;
 import engine.mod.gradle.run.ClientRunConfig;
+import engine.mod.gradle.run.ServerRunConfig;
 import groovy.lang.Closure;
 import groovy.lang.MissingPropertyException;
 import org.gradle.api.JavaVersion;
@@ -53,6 +54,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
             }
         });
         run(new ClientRunConfig());
+        run(new ServerRunConfig());
     }
 
     @Override

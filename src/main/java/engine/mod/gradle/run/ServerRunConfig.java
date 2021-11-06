@@ -2,16 +2,16 @@ package engine.mod.gradle.run;
 
 import java.util.List;
 
-public class ClientRunConfig extends AbstractRunConfig {
+public class ServerRunConfig extends AbstractRunConfig {
 
     @Override
     public String getName() {
-        return "Client";
+        return "Server";
     }
 
     @Override
     public String getMainClass() {
-        return "engine.client.launch.Bootstrap";
+        return "engine.server.launch.Bootstrap";
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ClientRunConfig extends AbstractRunConfig {
 
     @Override
     public List<String> getJvmArgs() {
-        return List.of("--add-opens", "java.base/java.lang=ALL-UNNAMED");
+        return List.of();
     }
 
 }
