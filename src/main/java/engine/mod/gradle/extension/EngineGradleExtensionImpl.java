@@ -1,6 +1,8 @@
 package engine.mod.gradle.extension;
 
 import engine.mod.gradle.extension.artifact.EngineArtifactSettings;
+import engine.mod.gradle.run.AbstractRunConfig;
+import engine.mod.gradle.run.ClientRunConfig;
 import groovy.lang.Closure;
 import groovy.lang.MissingPropertyException;
 import org.gradle.api.JavaVersion;
@@ -8,7 +10,6 @@ import org.gradle.api.Project;
 import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.api.plugins.JavaPluginExtension;
 
-@SuppressWarnings("rawtypes")
 public class EngineGradleExtensionImpl extends EngineGradleExtension {
 
     final Project project;
@@ -17,7 +18,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
     public EngineGradleExtensionImpl(Project project) {
         this.project = project;
         project.afterEvaluate(project1 -> {
-            { // Add JitPack Repository
+            { // Add JitPack repository
                 if (artifact.addJitPackRepo) {
                     project.getRepositories().mavenLocal();
                     project.getRepositories().maven(repo -> {
@@ -27,7 +28,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                     project.getRepositories().mavenCentral();
                 }
             }
-            { // Set Java Version
+            { // Set Java version
                 if (shouldSetJavaVersion) {
                     JavaPluginExtension java = project.getExtensions().getByType(JavaPluginExtension.class);
                     java.setSourceCompatibility(JavaVersion.VERSION_11);
@@ -51,11 +52,23 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                 }
             }
         });
+        run(new ClientRunConfig());
     }
 
     @Override
     public void artifact(Closure<Void> configurator) {
         project.configure(artifact, configurator);
+    }
+
+    @Override
+    public void runs(Closure<Void> configurator) {
+        getRunConfigs().forEach(config -> project.configure(config, configurator));
+    }
+
+    @Override
+    public void run(AbstractRunConfig config) {
+        getRunConfigs().add(config);
+        config.apply(project);
     }
 
     private void addEngineDependency(String module) {

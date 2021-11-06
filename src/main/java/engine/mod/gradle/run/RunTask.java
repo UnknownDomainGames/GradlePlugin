@@ -46,7 +46,7 @@ public class RunTask extends JavaExec {
     }
 
     @Internal
-    public AbstractRunConfig getConfigs() {
+    public AbstractRunConfig getConfig() {
         return config;
     }
 }
