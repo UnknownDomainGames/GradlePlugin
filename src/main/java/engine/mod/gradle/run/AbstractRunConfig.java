@@ -16,7 +16,15 @@ public abstract class AbstractRunConfig {
     public abstract List<String> getJvmArgs();
 
     public void apply(Project project) {
-        project.getTasks().create("run" + getName(), RunTask.class, this);
+        project.getTasks().create(getRunTaskName(), RunTask.class, this);
         IdeaConfiguration.createRunConfig(project, this);
+    }
+
+    public String getRunTaskName() {
+        return "run" + getName();
+    }
+
+    public String getIdeaRunConfigBaseName() {
+        return "Engine " + getName();
     }
 }

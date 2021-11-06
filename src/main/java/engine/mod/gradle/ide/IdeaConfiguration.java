@@ -25,7 +25,7 @@ public class IdeaConfiguration {
             File runConfigsDir = new File(project.getRootProject().file(".idea"), "runConfigurations");
             assert runConfigsDir.exists() || runConfigsDir.mkdirs();
 
-            String configName = "Engine " + config.getName()
+            String configName = config.getIdeaRunConfigBaseName()
                     + ((project.getRootProject() == project) ? "" : " " + project.getPath().replace(':', '_'));
             File configFile = new File(runConfigsDir, configName + ".xml");
             String configData = IOUtils.resourceToString("idea_run_config_template.xml", StandardCharsets.UTF_8, IdeaConfiguration.class.getClassLoader())
