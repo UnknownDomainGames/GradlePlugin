@@ -1,5 +1,6 @@
-package engine.mod.gradle.run;
+package engine.mod.gradle.task;
 
+import engine.mod.gradle.run.AbstractRunConfig;
 import org.gradle.api.internal.file.collections.FileCollectionAdapter;
 import org.gradle.api.internal.file.collections.MinimalFileSet;
 import org.gradle.api.plugins.JavaPlugin;

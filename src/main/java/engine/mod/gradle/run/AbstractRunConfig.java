@@ -1,6 +1,7 @@
 package engine.mod.gradle.run;
 
 import engine.mod.gradle.ide.IdeaConfiguration;
+import engine.mod.gradle.task.RunTask;
 import org.gradle.api.Project;
 
 import java.util.List;
