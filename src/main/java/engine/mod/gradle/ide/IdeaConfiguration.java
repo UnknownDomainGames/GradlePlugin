@@ -14,7 +14,8 @@ public class IdeaConfiguration {
 
     public static void apply(Project project) {
         IdeaModel model = project.getExtensions().getByType(IdeaModel.class);
-        model.getModule().getExcludeDirs().addAll(project.files(".gradle", "build", ".idea", "out").getFiles());
+        model.getModule().getExcludeDirs().addAll(project.files(".gradle", ".idea", "out").getFiles());
+        model.getModule().getExcludeDirs().add(project.getBuildDir());
         model.getModule().setDownloadJavadoc(true);
         model.getModule().setDownloadSources(true);
         model.getModule().setInheritOutputDirs(true);
