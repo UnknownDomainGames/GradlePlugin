@@ -3,7 +3,7 @@
 ![Java Version](https://img.shields.io/badge/Java-11-blue)
 [![All Contributors](https://img.shields.io/github/contributors/UnknownDomainGames/GradlePlugin)](https://github.com/UnknownDomainGames/GradlePlugin/graphs/contributors)
 [![License](https://img.shields.io/github/license/UnknownDomainGames/GradlePlugin)](https://github.com/UnknownDomainGames/GradlePlugin/blob/dev/LICENSE)
-[![Discord Onlines](https://img.shields.io/discord/556150394057916426)](http://discord.gg/KRGMBw3)
+[![Discord Online](https://img.shields.io/discord/556150394057916426)](http://discord.gg/KRGMBw3)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/UnknownDomainGames/GradlePlugin/Build)](https://github.com/UnknownDomainGames/GradlePlugin/actions/workflows/build.yml)
 [![Latest Version](https://img.shields.io/github/v/release/UnknownDomainGames/GradlePlugin?include_prereleases)](https://github.com/UnknownDomainGames/GradlePlugin/releases/latest)
 
@@ -41,8 +41,6 @@ engine {
     version '<ENGINE VERSION>'
 }
 ```
-
-
 
 ## 贡献代码（Contributing）
 
