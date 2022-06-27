@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class DefaultRunConfig extends AbstractRunConfig {
+public class DefaultRunConfig extends RunConfig {
 
     private final String name;
     private String mainClass;

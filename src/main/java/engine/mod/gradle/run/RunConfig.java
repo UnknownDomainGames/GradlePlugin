@@ -5,7 +5,7 @@ import org.gradle.api.Project;
 
 import java.util.List;
 
-public abstract class AbstractRunConfig {
+public abstract class RunConfig {
 
     public abstract String getName();
 

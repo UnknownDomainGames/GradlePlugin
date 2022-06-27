@@ -1,6 +1,6 @@
 package engine.mod.gradle.task;
 
-import engine.mod.gradle.run.AbstractRunConfig;
+import engine.mod.gradle.run.RunConfig;
 import org.gradle.api.internal.file.collections.FileCollectionAdapter;
 import org.gradle.api.internal.file.collections.MinimalFileSet;
 import org.gradle.api.plugins.JavaPlugin;
@@ -16,10 +16,10 @@ import java.util.Set;
 
 public class RunTask extends JavaExec {
 
-    private final AbstractRunConfig config;
+    private final RunConfig config;
 
     @Inject
-    public RunTask(AbstractRunConfig config) {
+    public RunTask(RunConfig config) {
         this.config = config;
 
         getMainClass().set(config.getMainClass());
@@ -47,7 +47,7 @@ public class RunTask extends JavaExec {
     }
 
     @Internal
-    public AbstractRunConfig getConfig() {
+    public RunConfig getConfig() {
         return config;
     }
 }

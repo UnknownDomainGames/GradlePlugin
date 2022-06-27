@@ -1,6 +1,6 @@
 package engine.mod.gradle.ide;
 
-import engine.mod.gradle.run.AbstractRunConfig;
+import engine.mod.gradle.run.RunConfig;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.gradle.api.Project;
@@ -23,7 +23,7 @@ public class IdeaConfiguration {
         module.setInheritOutputDirs(true);
     }
 
-    public static void generateRunConfig(Project project, AbstractRunConfig config) {
+    public static void generateRunConfig(Project project, RunConfig config) {
         try {
             File runConfigsDir = new File(project.getRootProject().file(".idea"), "runConfigurations");
             if (!runConfigsDir.getParentFile().exists()) {
