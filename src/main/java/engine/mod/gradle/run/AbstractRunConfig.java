@@ -1,6 +1,5 @@
 package engine.mod.gradle.run;
 
-import engine.mod.gradle.ide.IdeaConfiguration;
 import engine.mod.gradle.task.RunTask;
 import org.gradle.api.Project;
 
@@ -18,7 +17,6 @@ public abstract class AbstractRunConfig {
 
     public void apply(Project project) {
         project.getTasks().create(getRunTaskName(), RunTask.class, this);
-        IdeaConfiguration.createRunConfig(project, this);
     }
 
     public String getRunTaskName() {

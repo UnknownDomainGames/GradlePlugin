@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.gradle.api.Project;
 import org.gradle.plugins.ide.idea.model.IdeaModel;
+import org.gradle.plugins.ide.idea.model.IdeaModule;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +15,22 @@ public class IdeaConfiguration {
 
     public static void apply(Project project) {
         IdeaModel model = project.getExtensions().getByType(IdeaModel.class);
-        model.getModule().getExcludeDirs().addAll(project.files(".gradle", ".idea", "out").getFiles());
-        model.getModule().getExcludeDirs().add(project.getBuildDir());
-        model.getModule().setDownloadJavadoc(true);
-        model.getModule().setDownloadSources(true);
-        model.getModule().setInheritOutputDirs(true);
+        IdeaModule module = model.getModule();
+        module.getExcludeDirs().addAll(project.files(".gradle", ".idea", "out").getFiles());
+        module.getExcludeDirs().add(project.getBuildDir());
+        module.setDownloadJavadoc(true);
+        module.setDownloadSources(true);
+        module.setInheritOutputDirs(true);
     }
 
-    public static void createRunConfig(Project project, AbstractRunConfig config) {
+    public static void generateRunConfig(Project project, AbstractRunConfig config) {
         try {
             File runConfigsDir = new File(project.getRootProject().file(".idea"), "runConfigurations");
-            if(!runConfigsDir.exists() && !runConfigsDir.mkdirs())
+            if(!runConfigsDir.getParentFile().exists()) {
+                project.getLogger().trace(".idea not found, IDEA run configurations will not generated");
+                return;
+            }
+            if (!runConfigsDir.exists() && !runConfigsDir.mkdirs())
                 throw new IOException("runConfigurations directory does not exist and unable to create");
 
             String configName = config.getIdeaRunConfigBaseName()
