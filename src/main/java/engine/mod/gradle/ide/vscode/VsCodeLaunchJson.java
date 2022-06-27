@@ -8,6 +8,7 @@ public class VsCodeLaunchJson {
     public String version = "0.2.0";
     public List<Config> configurations = new LinkedList();
 
+    // @TODO: `type` field
     public static class Config {
 
         public String name;
