@@ -19,7 +19,7 @@ public class EngineArtifactSettings {
     public ArtifactNotationFormat dependencyFormat = ArtifactNotationFormat.JITPACK;
 
     public boolean addAnnotationProcessor = true;
-    public List<String> engineModules = new ArrayList<>(List.of("client", "server", "game-engine"));
+    public List<String> engineModules = new ArrayList<>(List.of("client", "server", "game-engine", "common"));
 
     public boolean addLWJGLNatives = true;
     public List<String> lwjglNativesModules = new ArrayList<>(List.of("lwjgl",
