@@ -19,7 +19,9 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
     public EngineGradleExtensionImpl(Project project) {
         this.project = project;
         project.afterEvaluate(project1 -> {
+            project.getLogger().trace("Applying Engine Gradle configuration");
             { // Add JitPack repository
+                project.getLogger().trace("Adding JitPack repository");
                 if (artifact.addJitPackRepo) {
                     project.getRepositories().mavenLocal();
                     project.getRepositories().maven(repo -> {
@@ -30,6 +32,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                 }
             }
             { // Set Java version
+                project.getLogger().trace("Setting Java version to 11");
                 if (shouldSetJavaVersion) {
                     JavaPluginExtension java = project.getExtensions().getByType(JavaPluginExtension.class);
                     java.setSourceCompatibility(JavaVersion.VERSION_11);
@@ -37,16 +40,22 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                 }
             }
             { // Add engine dependencies
+                project.getLogger().trace("Adding dependencies");
                 if (artifact.addAnnotationProcessor) {
+                    project.getLogger().trace("Adding mod annotation processor");
                     addEngineDependency(JavaPlugin.ANNOTATION_PROCESSOR_CONFIGURATION_NAME, "mod-annotation-processor");
                 }
                 for (String module : artifact.engineModules) {
+                    project.getLogger().trace("Adding engine module: " + module);
                     addEngineDependency(module);
                 }
             }
             { // Add lwjgl natives
                 if (artifact.addLWJGLNatives) {
+                    project.getLogger().trace("Adding LWJGL natives, version: " + artifact.lwjglNativesVersion
+                            + ", platform: " + artifact.lwjglNativesPlatform);
                     for (String module : artifact.lwjglNativesModules) {
+                        project.getLogger().trace("Adding LWJGL natives: " + module);
                         project.getDependencies().add(JavaPlugin.RUNTIME_ONLY_CONFIGURATION_NAME, "org.lwjgl:" + module
                                 + ":" + artifact.lwjglNativesVersion + ":" + artifact.lwjglNativesPlatform);
                     }
@@ -79,7 +88,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
 
     private void addEngineDependency(String configuration, String module) {
         if (artifact.version == null) {
-            throw new MissingPropertyException("The version of engine not defined. Add 'engine{ version 'xxx' }' to build.gradle");
+            throw new MissingPropertyException("The version of engine is undefined. Add 'engine{ version 'xxx' }' to build.gradle");
         }
         project.getDependencies().add(configuration, artifact.dependencyFormat.format(module, artifact.version));
     }
