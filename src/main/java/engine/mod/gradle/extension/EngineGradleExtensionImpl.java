@@ -2,6 +2,7 @@ package engine.mod.gradle.extension;
 
 import engine.mod.gradle.extension.artifact.EngineArtifactSettings;
 import engine.mod.gradle.ide.IdeaConfiguration;
+import engine.mod.gradle.ide.vscode.VsCodeConfiguration;
 import engine.mod.gradle.run.RunConfig;
 import engine.mod.gradle.run.ClientRunConfig;
 import engine.mod.gradle.run.ServerRunConfig;
@@ -69,6 +70,7 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                     for (RunConfig config : getRunConfigs()) {
                         IdeaConfiguration.generateRunConfig(project, config);
                     }
+                    VsCodeConfiguration.generateRunConfig(project);
                 }
             }
         });

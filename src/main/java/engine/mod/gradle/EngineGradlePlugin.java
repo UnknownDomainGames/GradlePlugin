@@ -8,6 +8,8 @@ import org.gradle.api.Project;
 import org.gradle.api.plugins.JavaLibraryPlugin;
 import org.gradle.api.plugins.JavaPlugin;
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin;
+import org.gradle.ide.visualstudio.plugins.VisualStudioPlugin;
+import org.gradle.plugins.ide.eclipse.EclipsePlugin;
 import org.gradle.plugins.ide.idea.IdeaPlugin;
 
 @SuppressWarnings("unused")
@@ -21,8 +23,8 @@ public class EngineGradlePlugin implements Plugin<Project> {
             project.getPluginManager().apply(JavaPlugin.class);
             project.getPluginManager().apply(JavaLibraryPlugin.class);
             project.getPluginManager().apply(MavenPublishPlugin.class);
-            //project.getPluginManager().apply(EclipsePlugin.class);
             project.getPluginManager().apply(IdeaPlugin.class);
+            //project.getPluginManager().apply(EclipsePlugin.class);
             IdeaConfiguration.apply(project);
         }
         EngineGradleExtension extension = new EngineGradleExtensionImpl(project);

@@ -33,7 +33,7 @@ public class IdeaConfiguration {
             if (!runConfigsDir.exists() && !runConfigsDir.mkdirs())
                 throw new IOException("runConfigurations directory does not exist and unable to create");
 
-            String configName = config.getIdeaRunConfigBaseName()
+            String configName = config.getIdeConfigurationBaseName()
                     + ((project.getRootProject() == project) ? "" : " " + project.getPath().replace(':', '_'));
             File configFile = new File(runConfigsDir, configName + ".xml");
             String configData = IOUtils.resourceToString("idea_run_config_template.xml", StandardCharsets.UTF_8, IdeaConfiguration.class.getClassLoader())

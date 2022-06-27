@@ -23,7 +23,7 @@ public abstract class RunConfig {
         return "run" + getName();
     }
 
-    public String getIdeaRunConfigBaseName() {
+    public String getIdeConfigurationBaseName() {
         return "Engine " + getName();
     }
 }
