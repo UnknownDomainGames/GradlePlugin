@@ -24,7 +24,7 @@ public class IdeaConfiguration {
         try {
             File runConfigsDir = new File(project.getRootProject().file(".idea"), "runConfigurations");
             if(!runConfigsDir.exists() && !runConfigsDir.mkdirs())
-                throw new IOException("runConfigurations directory does not exist and unable to create")
+                throw new IOException("runConfigurations directory does not exist and unable to create");
 
             String configName = config.getIdeaRunConfigBaseName()
                     + ((project.getRootProject() == project) ? "" : " " + project.getPath().replace(':', '_'));
