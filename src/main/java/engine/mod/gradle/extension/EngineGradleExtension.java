@@ -16,9 +16,9 @@ public abstract class EngineGradleExtension {
 
     private final List<RunConfig> runConfigs = new ArrayList<>();
 
-    public abstract void artifact(Closure<Void> configurator);
+    public abstract void artifact(@DelegatesTo(EngineArtifactSettings.class) Closure<Void> configurator);
 
-    public abstract void runs(Closure<Void> configurator);
+    public abstract void runs(@DelegatesTo(RunConfig.class) Closure<Void> configurator);
 
     public abstract void run(RunConfig config);
 
@@ -28,7 +28,7 @@ public abstract class EngineGradleExtension {
         artifact.version(version);
     }
 
-    public void run(String name, Closure<Void> configurator) {
+    public void run(String name, @DelegatesTo(RunConfig.class) Closure<Void> configurator) {
         run(new DefaultRunConfig(name));
     }
 
