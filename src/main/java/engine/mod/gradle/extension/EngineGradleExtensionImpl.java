@@ -6,9 +6,7 @@ import engine.mod.gradle.run.AbstractRunConfig;
 import engine.mod.gradle.run.ClientRunConfig;
 import engine.mod.gradle.run.ServerRunConfig;
 import groovy.lang.Closure;
-import groovy.lang.DelegatesTo;
 import groovy.lang.MissingPropertyException;
-import groovy.transform.stc.ClosureParams;
 import org.gradle.api.JavaVersion;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.JavaPlugin;
@@ -66,8 +64,8 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
                 }
             }
             { // Generate IDE runs
-                if(generateIdeRuns) {
-                    for(AbstractRunConfig config : getRunConfigs()) {
+                if (generateIdeRuns) {
+                    for (AbstractRunConfig config : getRunConfigs()) {
                         IdeaConfiguration.generateRunConfig(project, config);
                     }
                 }
@@ -91,6 +89,11 @@ public class EngineGradleExtensionImpl extends EngineGradleExtension {
     public void run(AbstractRunConfig config) {
         getRunConfigs().add(config);
         config.apply(project);
+    }
+
+    @Override
+    public void module(String name) {
+        artifact.engineModules.add(name);
     }
 
     private void addEngineDependency(String module) {

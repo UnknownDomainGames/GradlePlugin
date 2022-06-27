@@ -21,6 +21,8 @@ public abstract class EngineGradleExtension {
 
     public abstract void run(AbstractRunConfig config);
 
+    public abstract void module(String name);
+
     public void version(String version) {
         artifact.version(version);
     }

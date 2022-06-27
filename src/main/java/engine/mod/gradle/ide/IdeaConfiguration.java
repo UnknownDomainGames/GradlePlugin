@@ -26,7 +26,7 @@ public class IdeaConfiguration {
     public static void generateRunConfig(Project project, AbstractRunConfig config) {
         try {
             File runConfigsDir = new File(project.getRootProject().file(".idea"), "runConfigurations");
-            if(!runConfigsDir.getParentFile().exists()) {
+            if (!runConfigsDir.getParentFile().exists()) {
                 project.getLogger().trace(".idea not found, IDEA run configurations will not generated");
                 return;
             }
